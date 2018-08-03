@@ -1,4 +1,4 @@
-FROM he2-centos7-jdk8:0.1
+FROM centos7-jdk8:0.1
 
 RUN yum -y install gcc automake autoconf libtool make && yum install -y wget
 RUN cd /opt && \

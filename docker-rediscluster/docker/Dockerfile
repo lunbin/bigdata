@@ -11,7 +11,7 @@ COPY redis.conf /opt/redis
 COPY entrypoint.sh /opt
 COPY rh-ruby23.sh /etc/profile.d
 RUN chmod +x /etc/profile.d/rh-ruby23.sh
-RUN chmod +x entrypoint.sh
+RUN chmod +x /opt/entrypoint.sh
 #RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB 
 #RUN curl -L get.rvm.io | bash -s stable 
 #RUN source /usr/local/rvm/scripts/rvm 

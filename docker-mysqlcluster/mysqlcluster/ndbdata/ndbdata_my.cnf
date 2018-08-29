@@ -1,0 +1,6 @@
+[mysqld]
+ndbcluster
+character-set-server=utf8 
+
+[mysql_cluster]
+ndb-connectstring=%NDB_CONNECT_STRING%

@@ -1,0 +1,11 @@
+[mysqld]
+ndbcluster
+user=mysql
+log-error=/var/log/mysqlcluster.log
+log-bin=/app/ndb/data/mysqlcluster-bin
+server-id=1
+default-storage-engine=ndbcluster
+character-set-server=utf8 
+
+[mysql_cluster]
+ndb-connectstring=%NDB_CONNECT_STRING%

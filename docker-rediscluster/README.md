@@ -1,5 +1,6 @@
 - ##### build rediscluster image
   ```
+  cd docker
   docker build -t redistest:1.0 .
   ```
 - ##### start docker container

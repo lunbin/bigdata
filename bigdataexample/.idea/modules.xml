@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/bigdataexample.iml" filepath="$PROJECT_DIR$/bigdataexample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flinkexample/flinkexample.iml" filepath="$PROJECT_DIR$/flinkexample/flinkexample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hadooptest/hadooptest.iml" filepath="$PROJECT_DIR$/hadooptest/hadooptest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hbasetest/hbasetest.iml" filepath="$PROJECT_DIR$/hbasetest/hbasetest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kafkatest/kafkatest.iml" filepath="$PROJECT_DIR$/kafkatest/kafkatest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mysqlbinlog/mysqlbinlog.iml" filepath="$PROJECT_DIR$/mysqlbinlog/mysqlbinlog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sparktest/sparktest.iml" filepath="$PROJECT_DIR$/sparktest/sparktest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zktest/zktest.iml" filepath="$PROJECT_DIR$/zktest/zktest.iml" />
+    </modules>
+  </component>
+</project>

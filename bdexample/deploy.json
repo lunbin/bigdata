@@ -1,0 +1,44 @@
+{
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+        "name": "bigdata-example",
+        "namespace": "lbsheng",
+        "labels": {
+            "app": "bigdata-example-pod",
+            "name": "bigdata-example"
+        }
+    },
+    "spec": {
+        "volumes": [
+        ],
+        "containers": [
+            {
+                "name": "bigdata-example",
+                "image": "127.0.0.1:29006/tools/bigdata-example:2.2.3",
+                "command": [
+                    "tail",
+                    "-f",
+                    "/etc/hosts"
+                ],
+                "resources": {
+                    "limits": {
+                        "cpu": "500m",
+                        "memory": "2Gi"
+                    },
+                    "requests": {
+                        "cpu": "500m",
+                        "memory": "2Gi"
+                    }
+                },
+                "volumeMounts": [
+                ],
+                "imagePullPolicy": "IfNotPresent",
+                "securityContext": {
+                    "privileged": false
+                }
+            }
+        ],
+        "restartPolicy": "Always"
+    }
+}

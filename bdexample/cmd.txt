@@ -1,0 +1,1 @@
+java -cp bdexample-1.0-SNAPSHOT.jar:/opt/lib/* main zookeeper config/example.config

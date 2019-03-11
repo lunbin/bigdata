@@ -1,0 +1,2 @@
+COMPOSE_PROJECT_NAME=zk_cluster docker-compose -f docker-compose-kafka.yml -f docker-compose-zk.yml up -d
+COMPOSE_PROJECT_NAME=zk_cluster docker-compose -f docker-compose-kafka.yml -f docker-compose-zk.yml down 

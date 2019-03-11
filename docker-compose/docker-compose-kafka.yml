@@ -1,0 +1,47 @@
+version: '3'
+services:
+  kafka1:
+    image: wurstmeister/kafka 
+    restart: always
+    container_name: kafka1
+    hostname: kafka1
+    ports:
+     - "19091:9091"
+    environment:
+      JMX_PORT: 9997
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zk1:2181,zk2:2181,zk3:2181
+      BOOTSTRAP_SERVERS: kafka1:9091,kafka2:9092,kafka3:9093
+      #KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka1:9091
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://10.19.138.130:19091
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9091
+  kafka2:
+    image: wurstmeister/kafka
+    restart: always
+    container_name: kafka2
+    hostname: kafka2
+    ports:
+     - "19092:9092"
+    environment:
+      JMX_PORT: 9998
+      KAFKA_BROKER_ID: 2 
+      KAFKA_ZOOKEEPER_CONNECT: zk1:2181,zk2:2181,zk3:2181
+      BOOTSTRAP_SERVERS: kafka1:9091,kafka2:9092,kafka3:9093
+      #KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka1:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://10.19.138.130:19092
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+  kafka3:
+    image: wurstmeister/kafka
+    restart: always
+    container_name: kafka3
+    hostname: kafka3
+    ports:
+     - "19093:9093"
+    environment:
+      JMX_PORT: 9999
+      KAFKA_BROKER_ID: 3
+      KAFKA_ZOOKEEPER_CONNECT: zk1:2181,zk2:2181,zk3:2181
+      BOOTSTRAP_SERVERS: kafka1:9091,kafka2:9092,kafka3:9093
+      #KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka1:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://10.19.138.130:19093
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9093

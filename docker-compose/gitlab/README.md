@@ -7,7 +7,7 @@ Modify the volumes if you want(config,log, data)
 
 2 exec command  
 ```
-./gitlab up
+./gitlab.sh up
 
 ```
 

@@ -26,8 +26,12 @@ add "nginx['listen_port'] = 80" into gitlab.rb
 ```
 docker restart [container id]
 ```
+5 wait gitlab container status is healthy(about 4m)
 
-5 access gitlab webui by brower
+```
+docker ps
+```
+6 access gitlab webui by brower
 
 ```
 http:localhost:8929

@@ -1,9 +1,9 @@
 #### how to deploy gitlab in localhost
 
 1 edit docker-compose.yml  (Can also not be modified)  
-Modify the http port corresponding to 80（defaul is 8929)  
-Modify the ssh port corresponding to 22（defaul is 2289)
-Modify the volumes if you want(config,log, data)
+&nbsp;&nbsp;Modify the http port corresponding to 80（defaul is 8929)  
+&nbsp;&nbsp;Modify the ssh port corresponding to 22（defaul is 2289)  
+&nbsp;&nbsp;Modify the volumes if you want(config,log, data)
 
 2 exec command  
 ```

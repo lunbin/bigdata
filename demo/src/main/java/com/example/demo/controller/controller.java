@@ -1,10 +1,14 @@
 package com.example.demo.controller;
 
+import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.model.UserEntity;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +22,17 @@ public class controller {
   HttpServletRequest request;
 
   @Autowired
-  UserMapper userMapper;
+  UserService userService;
+
+
+  // --kafka.topic in command will replace kafka.topic in application.properties
+  @Value("${kafka.topic}")
+  String topic;
+
+  @GetMapping("/gettopic")
+  public String getTopic() {
+    return topic;
+  }
 
   @RequestMapping(path = "/get/{name}")
   public String getRequestPath(@PathVariable String name) {
@@ -44,7 +58,12 @@ public class controller {
 
   @PostMapping("/insert")
   public void insert(@RequestBody UserEntity user) {
-    userMapper.insert(user);
+    userService.insert(user);
+  }
+
+  @GetMapping("/getUserAll")
+  public List<UserEntity> getUserAll() {
+    return userService.getUserAll();
   }
 
   public String formatResquestUrl(String requesturl) {

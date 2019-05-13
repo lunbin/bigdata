@@ -16,8 +16,10 @@ import org.apache.kafka.connect.data.Struct;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
@@ -28,29 +30,38 @@ public class DemoApplication implements ApplicationRunner {
 
   public static void main(String[] args) throws InterruptedException {
 
-    // springboot test
-    //    SpringApplication.run(DemoApplication.class, args);
+//    // springboot test
+    SpringApplication.run(DemoApplication.class, args);
 
-    // kafka transaction test
+////    kafka transaction test
+//    KafkaTransactionTest transactionTest = new KafkaTransactionTest();
+//    transactionTest.transactionTest();
 
-    //    KafkaTransactionTest transactionTest = new KafkaTransactionTest();
-    //    transactionTest.transactionTest();
+////    hbase test
+//    HbaseTest hbaseTest = new HbaseTest();
+//    hbaseTest.createTable("test","personal,professional");
+//    hbaseTest.listHbaseTables();
+//    hbaseTest.addColumnFamilyForTable("test","age");
+//    hbaseTest.deleteColumnFamilyForTable("test","age");
+//    hbaseTest.putData2HTable("emp","4");
+//    hbaseTest.getDataFromHTableByRowKey("emp","1");
+//    hbaseTest.deleteDataFromHTableByRowKey("emp","4");
+//    hbaseTest.scanHTable("emp");
+//    hbaseTest.countHTable("emp");
+//    hbaseTest.exist("emp", "personal data", "city");
+//    hbaseTest.putData2HTableByMutator("emp");
 
-    //    hbase test
-    //    HbaseTest hbaseTest = new HbaseTest();
-    //    hbaseTest.createTable("test","personal,professional");
-    //    hbaseTest.listHbaseTables();
-    //    hbaseTest.addColumnFamilyForTable("test","age");
-    //    hbaseTest.deleteColumnFamilyForTable("test","age");
-    //    hbaseTest.putData2HTable("emp","4");
-    //    hbaseTest.getDataFromHTableByRowKey("emp","1");
-    //    hbaseTest.deleteDataFromHTableByRowKey("emp","4");
-    //    hbaseTest.scanHTable("emp");
-    //    hbaseTest.countHTable("emp");
-    //    hbaseTest.exist("emp", "personal data", "city");
-    //    hbaseTest.putData2HTableByMutator("emp");
+//    // maxwell test
+//    maxwellTest();
 
-    // maxwell test
+  }
+
+  @Override
+  public void run(ApplicationArguments args) throws Exception {
+    return;
+  }
+
+  public static void maxwellTest() {
     logger.info("Start maxwell test...");
     HashMap<String, String> properties = new HashMap<>();
     properties.put("host", "10.19.138.130");
@@ -81,6 +92,7 @@ public class DemoApplication implements ApplicationRunner {
           .field("trace", Schema.OPTIONAL_STRING_SCHEMA)
           .field("type", Schema.OPTIONAL_STRING_SCHEMA)
           .field("timestamp", Schema.OPTIONAL_INT64_SCHEMA);
+
       Schema valueSchema = builder.build();
       Struct valueStruct = new Struct(valueSchema);
 
@@ -106,19 +118,14 @@ public class DemoApplication implements ApplicationRunner {
             .put("type",row.getRowType());
         logger.info(valueStruct.toString());
       }
-
-
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (URISyntaxException e) {
       e.printStackTrace();
     } catch (IOException e) {
       e.printStackTrace();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
     }
-  }
-
-  @Override
-  public void run(ApplicationArguments args) throws Exception {
-    return;
   }
 }

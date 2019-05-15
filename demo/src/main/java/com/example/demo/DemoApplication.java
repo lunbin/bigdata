@@ -30,7 +30,7 @@ public class DemoApplication implements ApplicationRunner {
 
   public static void main(String[] args) throws InterruptedException {
 
-//    // springboot test
+  // springboot test
     SpringApplication.run(DemoApplication.class, args);
 
 ////    kafka transaction test
@@ -71,7 +71,7 @@ public class DemoApplication implements ApplicationRunner {
 
     properties.put("client_id", "210905121027");
     properties.put("replica_server_id", "210905121027");
-    properties.put("kafka_topic", ""); // no effect for producer is buffer
+    properties.put("kafka_topic", ""); // no effect when producer is buffer
     properties.put("producer", "buffer");
     properties.put("log_level", "info");
     MaxwellConfig maxwellConfig = MaxWellTest.generateMaxwellConfig(properties);
@@ -97,6 +97,15 @@ public class DemoApplication implements ApplicationRunner {
       Struct valueStruct = new Struct(valueSchema);
 
       while (true) {
+        /*
+        row => {"rowQuery":null,"rowType":"insert","database":"lbsheng","table":"table_mw","timestampMillis":1557891095000,
+         "position":{"lastHeartbeatRead":1557891086664,"binlogPosition":{"gtidSetStr":null,"gtid":null,"offset":69282,
+         "file":"mysql-bin.000219","gtidSet":{"uuidsets":[]}}},
+         "nextPosition":{"lastHeartbeatRead":1557891086664,"binlogPosition":
+         {"gtidSetStr":null,"gtid":null,"offset":69330,"file":"mysql-bin.000219","gtidSet":{"uuidsets":[]}}},
+         "kafkaTopic":null,"xid":14447,"xoffset":0,"serverId":1,"threadId":241,"data":{"id":12,"name":"liy","age":15},
+         "oldData":{},"extraAttributes":{},"approximateSize":372,"txcommit":true,"timestamp":1557891095}
+        */
         RowMap row = producer.poll(2000, TimeUnit.MILLISECONDS);
         if (row == null) {
           Thread.sleep(3000);
@@ -117,6 +126,11 @@ public class DemoApplication implements ApplicationRunner {
             .put("timestamp",row.getTimestampMillis())
             .put("type",row.getRowType());
         logger.info(valueStruct.toString());
+
+        /*
+         valueStruct => Struct{data_source=binlog,database=lbsheng,schema=null,table=table_mw,
+         data={"id":12,"name":"liy","age":15},directory=null,type=insert,timestamp=1557891095000}
+         */
       }
     } catch (SQLException e) {
       e.printStackTrace();

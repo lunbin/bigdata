@@ -1,0 +1,9 @@
+hbase_zookeeper_quorum=10.19.248.200:31127,10.19.248.200:30761,10.19.248.200:29776
+zookeeper_znode_parent=/pre1-hbase
+
+bootstrap_servers=10.19.248.200:31297,10.19.248.200:32425,10.19.248.200:31335
+
+kafka.topic=focuspeopleinfo
+hbase.table=focuspeopleinfo
+
+hbase_defaultColumnFamily=defaultFamily
